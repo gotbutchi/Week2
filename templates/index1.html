@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <span data-feather="home"></span>
+                {{parent_name[0]}} <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            {% for sub_cat in sub_cats %}
+            <li class="nav-item">
+              <a class="nav-link" href="/subcat2">
+                <span data-feather="file"></span>
+                {{sub_cat[0]}}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <h1 class="h2">{{parent_name[0]}}</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button class="btn btn-sm btn-outline-secondary">Share</button>
+              <button class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div>
+        </div>
+        </main>
+    </div>
+  </div>
+    <!-- JUMBOTRON -->
+    <div class="jumbotron jumbotron-fluid" style="background-image: url(/static/picture/jumbotron.png); height: 720px;">
+    </div>
+    <!-- JUMBOTRON -->
+
+    <!-- CARDS for PRODUCT DISPLAY -->
+    <div class="container">
+      <div class="card-columns">
+
+        <!-- {% for a in a %} -->
+        <div class="card">
+          <div class="card-body">
+            <a href="{{ article.link }}">
+              <img class="img-fluid rounded-circle w-100 mb-3" src="{{ article.image }}" alt="Card image cap">
+              </a>
+            <h6 class="card-topic">{{ article.topic }}</h6>
+            <a href="{{ article.link }}" style="text-decoration:none;">
+              <h5 class="card-title">{{ article.title }}</h5>
+            </a>
+            <h6 class="card-author">{{ article.author }}</h6>
+            <p class="card-text">{{ article.description }}</p>
+          </div> 
+        </div>
+        <!-- {% endfor %} -->
+
+       </div>
+    </div>
+    <!-- CARDS for PRODUCT DISPLAY -->
+    
+{% endblock %}

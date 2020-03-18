@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <span data-feather="home"></span>
+                {{parent_name[0]}} <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            {% for sub_cat in sub_cats %}
+            <li class="nav-item">
+              <a class="nav-link" href="/subcat1">
+                <span data-feather="file"></span>
+                {{sub_cat[0]}}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <h1 class="h2">Beauty is whatever gives joy!</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button class="btn btn-sm btn-outline-secondary">Share</button>
+              <button class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div>
+        </div>
+        </main>
+    </div>
+  </div>
+    <!-- JUMBOTRON -->
+    <div class="jumbotron jumbotron-fluid" style="background-image: url(/static/picture/jumbotron.png); height: 720px; margin-left: 196px;">
+    </div>
+    <!-- JUMBOTRON -->
+
+    <!-- CARDS for PRODUCT DISPLAY -->  
+    <div class="container" style="margin-left: 260px">
+      <div class="card-columns">
+
+        {% for product in products %}
+        <div class="card">
+          <div class="card-body">
+            <a href="{{ product[2] }}">
+              <img class="img-fluid w-100 mb-3" src="{{ product[3] }}" alt="Card image cap">
+              </a>
+            <h6 class="card-topic">Ratings : {{ product[8] }} </h6>
+            <a href="{{ product[2] }}" style="text-decoration:none;">
+              <h5 class="card-title">{{ product[1] }}</h5>
+            </a>
+            <h7 class="card-author">Regular Price: {{ product[4] }}</h7>
+            <h6 class="card-author">Discount Price: {{ product[5] }}</h6>
+            <h7 class="card-author">Sale off: {{ product[6] }}</h7>
+            <p class="card-text">{{ product[7] }}</p>
+          </div> 
+        </div>
+        {% endfor %}
+       </div>
+    </div>
+    <!-- CARDS for PRODUCT DISPLAY -->
+    
+{% endblock %}
